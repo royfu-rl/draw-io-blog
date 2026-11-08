@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术流程图图鉴</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,900;1,9..144,300;1,9..144,400&family=Newsreader:ital,opsz@0,6..72;1,6..72&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;900&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#f3efe6;--ink:#211d18;--clay:#c2562f;--clay2:#8f3b1e;--sage:#5c6a52;--gold:#b8893a;--line:#ddd5c6;--mute:#7d7464;
+    --serif:'Newsreader','Noto Serif SC',serif;--display:'Fraunces','Noto Serif SC',serif;--mono:'JetBrains Mono','Noto Sans SC',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.75;
+    background-image:radial-gradient(circle at 85% 0%,rgba(194,86,47,.12),transparent 45%),radial-gradient(circle at 0% 80%,rgba(92,106,82,.12),transparent 40%);background-attachment:fixed}
+  .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .r{opacity:0;animation:rise .85s cubic-bezier(.2,.7,.2,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}
+
+  header{padding:12vh 0 5vh;max-width:900px}
+  .tag{font-family:var(--mono);font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--clay);margin-bottom:26px}
+  h1{font-family:var(--display);font-weight:900;font-size:clamp(48px,8vw,96px);line-height:.98;letter-spacing:-.02em;font-variation-settings:"opsz" 144}
+  h1 em{font-style:italic;font-weight:300;color:var(--clay)}
+  .lede{font-size:20px;color:#3a342b;margin-top:30px;max-width:760px}
+  .byline{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;padding-top:20px;border-top:1.5px solid var(--ink);
+    font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em}
+  .byline b{color:var(--ink);font-weight:500}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:10px 0 56px}
+  .stat{background:var(--paper);padding:24px 22px}
+  .stat .v{font-family:var(--display);font-weight:900;font-size:44px;color:var(--clay2);line-height:1;font-variation-settings:"opsz" 100}
+  .stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-top:10px}
+
+  h2{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.015em;line-height:1.15;margin:0 0 8px}
+  h2 .num{font-family:var(--mono);font-size:.34em;color:var(--clay);vertical-align:super;margin-right:.6em}
+  .sub{color:var(--mute);margin-bottom:26px}
+  .howto{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:26px 0 64px;counter-reset:s}
+  .howto li{list-style:none;border-top:1.5px solid var(--ink);padding-top:14px;counter-increment:s}
+  .howto li::before{content:"0" counter(s);font-family:var(--mono);font-size:12px;color:var(--clay);display:block;margin-bottom:6px}
+  .howto b{font-family:var(--display);font-weight:500;font-size:20px;display:block;margin-bottom:4px}
+  .howto span{color:#4a4338;font-size:16px}
+  code{font-family:var(--mono);font-size:.82em;background:rgba(194,86,47,.08);padding:1px 6px;border-radius:4px;color:var(--clay2)}
+
+  .filters{display:flex;gap:10px;margin:0 0 28px;position:sticky;top:0;z-index:5;padding:14px 0;background:linear-gradient(var(--paper) 70%,transparent)}
+  .filters button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;border:1px solid var(--ink);background:transparent;color:var(--ink);
+    padding:7px 16px;border-radius:30px;cursor:pointer}
+  .filters button.on{background:var(--ink);color:var(--paper)}
+
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+  .card{background:#fffdf8;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(80,50,20,.45);display:flex;flex-direction:column}
+  .card.hide{display:none}
+  .plate{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--mute);padding:9px 12px 9px 18px;border-bottom:1px solid var(--line)}
+  .plate b{color:var(--clay);font-weight:500}
+  .viewer{position:relative;background:#fff;border-bottom:1px solid var(--line);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:18px;cursor:zoom-in}
+  .viewer img{max-width:100%;max-height:100%;object-fit:contain}
+  .seg{display:flex;flex:none;letter-spacing:0;background:rgba(243,239,230,.92);border:1px solid var(--line);border-radius:20px;padding:2px;z-index:2}
+  .seg button{font-family:var(--mono);font-size:11px;border:0;background:transparent;color:var(--mute);padding:4px 10px;border-radius:16px;cursor:pointer}
+  .seg button.on{background:var(--ink);color:var(--paper)}
+  .body{padding:20px 22px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .card h3{font-family:var(--display);font-weight:900;font-size:28px;line-height:1.1;letter-spacing:-.01em}
+  .card h3 .fig{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--mute);margin-left:10px;letter-spacing:.06em}
+  .paper{font-size:15px;line-height:1.5;color:#4a4338}
+  .paper a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+  .paper a:hover{color:var(--clay2);border-color:var(--clay)}
+  .venue{font-family:var(--mono);font-size:11px;color:var(--clay2);background:rgba(194,86,47,.09);padding:2px 8px;border-radius:10px;margin-left:8px;white-space:nowrap}
+  .meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .sws{display:flex}
+  .sw{width:26px;height:26px;border-radius:50%;background:var(--c);border:2px solid #fffdf8;margin-right:-6px;cursor:pointer;box-shadow:0 0 0 1px var(--line);transition:transform .15s}
+  .sw:hover{transform:translateY(-3px);z-index:1}
+  .fonts{font-family:var(--mono);font-size:11.5px;color:var(--mute)}
+  .take{list-style:none;font-size:15.5px;line-height:1.6;color:#2c2820}
+  .take li{padding-left:18px;position:relative;margin:5px 0}
+  .take li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--clay)}
+  details{font-size:14px;color:#4a4338}
+  details summary{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--mute);cursor:pointer}
+  details dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin-top:8px}
+  details dt{font-family:var(--mono);font-size:11px;color:var(--mute);padding-top:3px}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+  .links a,.links .pending{font-family:var(--mono);font-size:11.5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);padding:5px 12px;border-radius:20px}
+  .links a:first-child{background:var(--clay);border-color:var(--clay);color:#fff}
+  .links a:hover{border-color:var(--ink)}
+  .links .pending{color:var(--mute);border-style:dashed}
+
+  .rules{margin:80px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 34px;list-style:none}
+  .rules li{border-top:1.5px solid var(--ink);padding:16px 0 28px}
+  .rules b{font-family:var(--display);font-weight:500;font-size:21px;display:block;margin-bottom:6px}
+  .rules span{color:#4a4338;font-size:16px}
+  footer{margin:9vh 0 12vh;padding-top:30px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-size:12px;color:var(--mute);line-height:2}
+  footer a{color:var(--clay2)}
+
+  .lb{position:fixed;inset:0;z-index:20;background:rgba(33,29,24,.86);display:none;overflow:auto;padding:40px 4vw}
+  .lb.on{display:block}
+  .lb figure{background:#fff;border-radius:10px;padding:18px;margin:0 auto 24px;max-width:1500px}
+  .lb figcaption{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--clay);margin-bottom:10px}
+  .lb img{width:100%;display:block}
+  .lb .x{position:fixed;top:16px;right:22px;font-family:var(--mono);color:var(--paper);font-size:13px;cursor:pointer;letter-spacing:.1em}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:8px 16px;border-radius:20px;opacity:0;transition:opacity .2s;z-index:30}
+  .toast.on{opacity:1}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}.howto,.rules{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.wrap{padding:0 16px}body{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="wrap">
+
+<header>
+  <div class="tag r d1">Figure Atlas · 20 Plates</div>
+  <h1 class="r d2">学术流程图<br><em>图鉴</em></h1>
+  <p class="lede r d3">从 PaperGallery 策展的 256 张框架图与 16 篇经典论文中，挑出 20 张最耐看的流程图 / 架构图，全部用 draw.io 一比一复刻成可编辑源文件。画新图时，先在这里找一张气质相近的，下载 .drawio 改字换色即可。</p>
+  <div class="byline r d4"><span><b>20/20</b> 已复刻</span><span>来源 · PaperGallery + arXiv</span><span>2026.11.05</span></div>
+</header>
+
+<section class="stats r d4">
+  <div class="stat"><div class="v">20</div><div class="l">张入选图</div></div>
+  <div class="stat"><div class="v">11</div><div class="l">流程图 workflow</div></div>
+  <div class="stat"><div class="v">9</div><div class="l">架构图 architecture</div></div>
+  <div class="stat"><div class="v">2,706</div><div class="l">可编辑图元</div></div>
+</section>
+
+<h2 class="r d4"><span class="num">01</span>怎么用</h2>
+<ol class="howto r d4">
+  <li><b>按气质找图</b><span>流程图看 01–11，模型架构看 12–20。卡片右上角可切换「复刻 / 原图」，点图放大对比。</span></li>
+  <li><b>下载 .drawio 改</b><span>橙色按钮下载源文件，用 draw.io 打开：文字、颜色、箭头全部可编辑，图标是矢量 SVG。</span></li>
+  <li><b>抄配色和字体</b><span>色点点击即复制 hex；字体列在色点旁边，Google Fonts 可直接在 draw.io 里加载。</span></li>
+</ol>
+
+<h2><span class="num">02</span>图版</h2>
+<p class="sub">每张卡片下方是它「为什么好看」的三条拆解。</p>
+<nav class="filters">
+  <button class="on" data-f="all">全部 20</button><button data-f="workflow">流程图 11</button><button data-f="architecture">架构图 9</button>
+</nav>
+<main class="grid">
+<article class="card r" style="animation-delay:0.30s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 01</b> · 流程图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/01-instructgpt.png" data-render="render/01-instructgpt.png" data-original="original/01-instructgpt.png" alt="InstructGPT">
+  </div>
+  <div class="body">
+    <h3>InstructGPT<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2203.02155" target="_blank">Training language models to follow instructions with human feedback</a><span class="venue">NeurIPS 2022</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#CAE4F1" data-hex="#CAE4F1" title="点击复制 #CAE4F1"></button><button class="sw" style="--c:#F5F5F4" data-hex="#F5F5F4" title="点击复制 #F5F5F4"></button><button class="sw" style="--c:#000000" data-hex="#000000" title="点击复制 #000000"></button><button class="sw" style="--c:#404451" data-hex="#404451" title="点击复制 #404451"></button><button class="sw" style="--c:#8E8D9F" data-hex="#8E8D9F" title="点击复制 #8E8D9F"></button><button class="sw" style="--c:#06B6FE" data-hex="#06B6FE" title="点击复制 #06B6FE"></button></div><div class="fonts">Inter</div></div>
+    <ul class="take"><li>三栏等宽版式：左侧大号说明文字 + 右侧一列等宽卡片，栏间只用 1px 极浅竖线分隔；阅读顺序靠位置表达，不需要额外框线</li><li>卡片只有两色且无描边：浅蓝 = 输入 prompt、暖灰 = 处理步骤，统一大圆角；数据流箭头灰紫、「训练」箭头与反馈环亮蓝，两类箭头一眼分开</li><li>细节：箭头尾部从白渐变到箭头色；神经网络小图标的节点带一圈底色描边形成「断线光晕」；收拢四个输出的括号用大半径圆弧</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>159 个</dd><dt>位图嵌入</dt><dd>无；标注员头像与青蛙剪影从原图描摹为 SVG，月亮 / 铅笔 / 文档为手写 SVG，其余为原生图元</dd><dt>与原图差异</dt><dd>裁掉了原图的白边；Inter 与 OpenAI 原字体接近但不完全一致，部分单词窄 1–3%；头像发丝简化为单一黑色形状</dd></dl></details>
+    <div class="links"><a href="drawio/01-instructgpt.drawio" download>⬇ .drawio</a><a href="original/01-instructgpt.png" target="_blank">原图 PNG</a><a href="render/01-instructgpt.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.35s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 02</b> · 流程图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/02-llama2.png" data-render="render/02-llama2.png" data-original="original/02-llama2.png" alt="Llama 2">
+  </div>
+  <div class="body">
+    <h3>Llama 2<span class="fig">Fig. 4</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2307.09288" target="_blank">Llama 2: Open Foundation and Fine-Tuned Chat Models</a><span class="venue">Tech Report 2023</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#ECF0F2" data-hex="#ECF0F2" title="点击复制 #ECF0F2"></button><button class="sw" style="--c:#DFE3E8" data-hex="#DFE3E8" title="点击复制 #DFE3E8"></button><button class="sw" style="--c:#A3B7C2" data-hex="#A3B7C2" title="点击复制 #A3B7C2"></button><button class="sw" style="--c:#B8C1CC" data-hex="#B8C1CC" title="点击复制 #B8C1CC"></button><button class="sw" style="--c:#4C5961" data-hex="#4C5961" title="点击复制 #4C5961"></button><button class="sw" style="--c:#667788" data-hex="#667788" title="点击复制 #667788"></button><button class="sw" style="--c:#000000" data-hex="#000000" title="点击复制 #000000"></button></div><div class="fonts">Quicksand · Helvetica</div></div>
+    <ul class="take"><li>整张图只用一组偏蓝的灰：面板底、次级节点、模型椭圆、描边与弯箭头逐级加深，只有文字用纯黑，整体柔和但层次清楚</li><li>形状即类型：数据 = 细圆环 + 图标，过程 = 菱形，奖励模型 = 灰椭圆，模型 = 实心蓝灰椭圆（Llama-2-Chat 再加深色描边）；分组用三种边框：虚线 = 阶段、实心底 = 微调、点线 = RLHF 子循环</li><li>面板标签放在小底块上「打断」边框，比放在框外更紧凑；三支粗弯箭头组成 RLHF 闭环；细连线统一用轻量空心箭头</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>45 个</dd><dt>位图嵌入</dt><dd>无；对话气泡、人物、盾牌、手 + 勾、云 + 数据库图标从原图描摹为分层 SVG，其余为原生图元</dd><dt>与原图差异</dt><dd>Quicksand 与原几何无衬线字体接近，逐行用字距对齐宽度，RM 宽约 3px；粗弯箭头为二次曲线，与原路径差 2–4px；白色 Llama-2 标签略淡</dd></dl></details>
+    <div class="links"><a href="drawio/02-llama2.drawio" download>⬇ .drawio</a><a href="original/02-llama2.png" target="_blank">原图 PNG</a><a href="render/02-llama2.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.40s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 03</b> · 流程图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/03-dpo.png" data-render="render/03-dpo.png" data-original="original/03-dpo.png" alt="DPO">
+  </div>
+  <div class="body">
+    <h3>DPO<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2305.18290" target="_blank">Direct Preference Optimization: Your Language Model is Secretly a Reward Model</a><span class="venue">NeurIPS 2023</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#F2E2E2" data-hex="#F2E2E2" title="点击复制 #F2E2E2"></button><button class="sw" style="--c:#DCEEEE" data-hex="#DCEEEE" title="点击复制 #DCEEEE"></button><button class="sw" style="--c:#5E9E9A" data-hex="#5E9E9A" title="点击复制 #5E9E9A"></button><button class="sw" style="--c:#B33A2E" data-hex="#B33A2E" title="点击复制 #B33A2E"></button><button class="sw" style="--c:#8FAAC4" data-hex="#8FAAC4" title="点击复制 #8FAAC4"></button><button class="sw" style="--c:#C495B6" data-hex="#C495B6" title="点击复制 #C495B6"></button><button class="sw" style="--c:#111111" data-hex="#111111" title="点击复制 #111111"></button></div><div class="fonts">Nunito</div></div>
+    <ul class="take"><li>左右双面板对照：同一套图元（偏好气泡、箭头、神经网络）复用，差异一眼可见</li><li>面板用极淡的同色系底（粉 vs 青），强调色只给关键结论词（maximum likelihood / reinforcement learning）</li><li>圆体 Nunito + 大字号短标签，几乎不用框线，靠留白和字重分层</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>132 个</dd><dt>位图嵌入</dt><dd>无；奖杯为 Fluent Emoji 矢量 SVG</dd><dt>与原图差异</dt><dd>奖杯图标造型与原图略有不同</dd></dl></details>
+    <div class="links"><a href="drawio/03-dpo.drawio" download>⬇ .drawio</a><a href="original/03-dpo.png" target="_blank">原图 PNG</a><a href="render/03-dpo.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.45s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 04</b> · 流程图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/04-tree-of-thoughts.png" data-render="render/04-tree-of-thoughts.png" data-original="original/04-tree-of-thoughts.png" alt="Tree of Thoughts">
+  </div>
+  <div class="body">
+    <h3>Tree of Thoughts<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2305.10601" target="_blank">Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a><span class="venue">NeurIPS 2023</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#D9EAD3" data-hex="#D9EAD3" title="点击复制 #D9EAD3"></button><button class="sw" style="--c:#EDEDED" data-hex="#EDEDED" title="点击复制 #EDEDED"></button><button class="sw" style="--c:#93C47D" data-hex="#93C47D" title="点击复制 #93C47D"></button><button class="sw" style="--c:#3A8B17" data-hex="#3A8B17" title="点击复制 #3A8B17"></button><button class="sw" style="--c:#FFDADA" data-hex="#FFDADA" title="点击复制 #FFDADA"></button><button class="sw" style="--c:#FFF6F6" data-hex="#FFF6F6" title="点击复制 #FFF6F6"></button><button class="sw" style="--c:#585858" data-hex="#585858" title="点击复制 #585858"></button></div><div class="fonts">Ubuntu</div></div>
+    <ul class="take"><li>四栏并排、同一套「Input 椭圆→思维方块→Output 椭圆」骨架，只改中间结构，对比一眼可见</li><li>颜色即语义：深绿=被选路径、浅绿=可行、粉/浅粉=被剪枝；绿色粗箭头叠在细粉箭头之上突出搜索路径</li><li>极简图元（灰框+深灰 2px 线+虚线分隔+虚线图例框），统一 Ubuntu 字体，Google Slides 默认色板即可复用</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>75 个</dd><dt>位图嵌入</dt><dd>无</dd><dt>与原图差异</dt><dd>Ubuntu 字体渲染略粗、宽度差约 3px；大括号由两段曲线拼成；绿色箭头头部大小差 1–2px</dd></dl></details>
+    <div class="links"><a href="drawio/04-tree-of-thoughts.drawio" download>⬇ .drawio</a><a href="original/04-tree-of-thoughts.png" target="_blank">原图 PNG</a><a href="render/04-tree-of-thoughts.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.50s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 05</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/05-agentthink.png" data-render="render/05-agentthink.png" data-original="original/05-agentthink.png" alt="AgentThink">
+  </div>
+  <div class="body">
+    <h3>AgentThink<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2505.15298" target="_blank">AgentThink: A Unified Framework for Tool-Augmented Chain-of-Thought Reasoning in Vision-Language Models for Autonomous Driving</a><span class="venue">EMNLP 2025</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#E3F1D8" data-hex="#E3F1D8" title="点击复制 #E3F1D8"></button><button class="sw" style="--c:#FCE5D5" data-hex="#FCE5D5" title="点击复制 #FCE5D5"></button><button class="sw" style="--c:#D4F4F1" data-hex="#D4F4F1" title="点击复制 #D4F4F1"></button><button class="sw" style="--c:#FFF2D0" data-hex="#FFF2D0" title="点击复制 #FFF2D0"></button><button class="sw" style="--c:#FED967" data-hex="#FED967" title="点击复制 #FED967"></button><button class="sw" style="--c:#F3FFFD" data-hex="#F3FFFD" title="点击复制 #F3FFFD"></button><button class="sw" style="--c:#102B82" data-hex="#102B82" title="点击复制 #102B82"></button></div><div class="fonts">Comic Relief · Carlito · Montserrat · Didact Gothic · Times New Roman</div></div>
+    <ul class="take"><li>三段式布局：每列 = 带投影的圆角页签 + 同色系描边面板，绿 / 橙 / 青三种色相区分数据、训练、推理；面板之间用渐变胖箭头衔接，颜色从上一列过渡到下一列</li><li>层级靠线型区分：实线粗描边 = 实体模块，细虚线 = 阶段内分组（SFT、Pretrained VLM），粗虚线大框 + 两条放大引线 = 把 GRPO 展开成奖励细节</li><li>通篇手写 Comic 字体 + 大量 lineal-color 小图标和吉祥物，学术图显得亲和；可复用部件：图标 + 文字的指标列表、虚线小方块里的 ✗✗✓✗ 采样结果、雪花 / 火焰的 Frozen / Trainable 图例</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>168 个</dd><dt>位图嵌入</dt><dd>仅 2 张水豚吉祥物插画裁自原图；其余 25 个图标均为矢量（手写 SVG + Fluent 车 / 火焰 + Simple Icons 的 OpenAI 标志）</dd><dt>与原图差异</dt><dd>地图、Qwen 标志、勋章、灯泡、工具等手绘图标为近似；原图是 JPEG，文字笔画更粗，复刻里 Comic / Montserrat 略细，个别行宽差 2–4%</dd></dl></details>
+    <div class="links"><a href="drawio/05-agentthink.drawio" download>⬇ .drawio</a><a href="original/05-agentthink.png" target="_blank">原图 PNG</a><a href="render/05-agentthink.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.55s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 06</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/06-lc-r1.png" data-render="render/06-lc-r1.png" data-original="original/06-lc-r1.png" alt="LC-R1">
+  </div>
+  <div class="body">
+    <h3>LC-R1<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2506.14755" target="_blank">Optimizing Length Compression in Large Reasoning Models</a><span class="venue">arXiv 2025</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#F2F2F2" data-hex="#F2F2F2" title="点击复制 #F2F2F2"></button><button class="sw" style="--c:#FDF7F7" data-hex="#FDF7F7" title="点击复制 #FDF7F7"></button><button class="sw" style="--c:#F4FAF8" data-hex="#F4FAF8" title="点击复制 #F4FAF8"></button><button class="sw" style="--c:#2F8079" data-hex="#2F8079" title="点击复制 #2F8079"></button><button class="sw" style="--c:#32C9BA" data-hex="#32C9BA" title="点击复制 #32C9BA"></button><button class="sw" style="--c:#CD8495" data-hex="#CD8495" title="点击复制 #CD8495"></button><button class="sw" style="--c:#FED966" data-hex="#FED966" title="点击复制 #FED966"></button><button class="sw" style="--c:#A8D18D" data-hex="#A8D18D" title="点击复制 #A8D18D"></button><button class="sw" style="--c:#AB4344" data-hex="#AB4344" title="点击复制 #AB4344"></button></div><div class="fonts">Jost</div></div>
+    <ul class="take"><li>每条推理序列画成一行固定高度的圆角色条：青 = 有效思考、粉 = 无效思考、细黄条 = &lt;/think&gt;、绿 = 答案、红 = 错答；颜色本身就是图例，左右面板对照，压缩前后差异一眼可见</li><li>布局 = 浅灰大圆角底板 + 三块双线描边带柔和阴影的白面板；阶段之间用实心黑三角当箭头，比普通箭头醒目又不乱</li><li>图标统一纯黑剪影（人头、奖章、眼睛、刷新），与彩色序列条拉开层次；灰色括号线 + Output-k 标注、⋮ 省略、⊕ 汇流点都可直接复用</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>200 个</dd><dt>位图嵌入</dt><dd>无；7 个黑色剪影图标用 potrace 从原图矢量化后以 SVG 嵌入</dd><dt>与原图差异</dt><dd>Jost 代替 Futura，字形与字距略异；描摹图标边缘略有抖动；面板阴影为 draw.io 偏移阴影，原图是四周柔光；虚线空心箭头用 flexArrow 近似</dd></dl></details>
+    <div class="links"><a href="drawio/06-lc-r1.drawio" download>⬇ .drawio</a><a href="original/06-lc-r1.png" target="_blank">原图 PNG</a><a href="render/06-lc-r1.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.60s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 07</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/07-grape.png" data-render="render/07-grape.png" data-original="original/07-grape.png" alt="GRAPE">
+  </div>
+  <div class="body">
+    <h3>GRAPE<span class="fig">框架图</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2411.19309" target="_blank">GRAPE: Generalizing Robot Policy via Preference Alignment</a><span class="venue">arXiv 2024</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#FAF1EA" data-hex="#FAF1EA" title="点击复制 #FAF1EA"></button><button class="sw" style="--c:#F3F2FA" data-hex="#F3F2FA" title="点击复制 #F3F2FA"></button><button class="sw" style="--c:#EBAB88" data-hex="#EBAB88" title="点击复制 #EBAB88"></button><button class="sw" style="--c:#BF5019" data-hex="#BF5019" title="点击复制 #BF5019"></button><button class="sw" style="--c:#A87FC1" data-hex="#A87FC1" title="点击复制 #A87FC1"></button><button class="sw" style="--c:#8AA7C4" data-hex="#8AA7C4" title="点击复制 #8AA7C4"></button><button class="sw" style="--c:#6A3988" data-hex="#6A3988" title="点击复制 #6A3988"></button></div><div class="fonts">Albert Sans · JetBrains Mono · Times New Roman</div></div>
+    <ul class="take"><li>上下两段用极浅的桃色 / 薰衣草色面板区分「生成」与「优化」两阶段，组件描边颜色跟随所在面板（上橙下紫蓝），分区一眼可见</li><li>跨面板反馈箭头用渐变（橙→紫、紫→蓝）把两段颜色缝起来，表达信息从上段流入下段；draw.io 里一条 flexArrow + gradientColor 即可</li><li>视觉语法统一：白底圆角框 + 5px 彩色描边 = 模型/集合；实心圆角色块 = 可枚举选项；粗黑直角折线 + 实心箭头 = 数据流；照片套点线框 = 视觉证据。可直接当 VLA / 机器人 pipeline 模板</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>121 个</dd><dt>位图嵌入</dt><dd>8 张机器人场景照片（初始状态、训练任务、(a) 的 4 帧、(b) 的 2 帧）裁自原图；关键点编号为原生图元叠在照片上</dd><dt>与原图差异</dt><dd>Aptos 用 Albert Sans 代替，笔画略细；机器人、机械臂、葡萄、信息图标为手绘 SVG；原图 JPEG 的柔边与阴影在复刻中更锐利；文字位置误差约 3px</dd></dl></details>
+    <div class="links"><a href="drawio/07-grape.drawio" download>⬇ .drawio</a><a href="original/07-grape.png" target="_blank">原图 PNG</a><a href="render/07-grape.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.65s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 08</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/08-scilitllm.png" data-render="render/08-scilitllm.png" data-original="original/08-scilitllm.png" alt="SciLitLLM">
+  </div>
+  <div class="body">
+    <h3>SciLitLLM<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2408.15545" target="_blank">SciLitLLM: How to Adapt LLMs for Scientific Literature Understanding</a><span class="venue">arXiv 2024</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#E6EFDC" data-hex="#E6EFDC" title="点击复制 #E6EFDC"></button><button class="sw" style="--c:#E1EBF5" data-hex="#E1EBF5" title="点击复制 #E1EBF5"></button><button class="sw" style="--c:#F2F2F2" data-hex="#F2F2F2" title="点击复制 #F2F2F2"></button><button class="sw" style="--c:#FEF7E4" data-hex="#FEF7E4" title="点击复制 #FEF7E4"></button><button class="sw" style="--c:#EAB48A" data-hex="#EAB48A" title="点击复制 #EAB48A"></button><button class="sw" style="--c:#F9D87E" data-hex="#F9D87E" title="点击复制 #F9D87E"></button><button class="sw" style="--c:#343434" data-hex="#343434" title="点击复制 #343434"></button></div><div class="fonts">Open Sans</div></div>
+    <ul class="take"><li>两层容器：点线大框 + 跨边框的浅绿胶囊标题（CPT / SFT）；内部圆角子面板把标题和小图标嵌进顶边缺口，层级清楚又不拥挤</li><li>箭头颜色有固定含义：橙色粗箭头 = 模型权重流（Qwen2 → Base → Instruct），黄色粗箭头 = 数据流，灰色细箭头 = 被过滤的数据，不看文字也能分清三种流</li><li>用对话气泡 + 头像 / 模型图标把 prompt 模板画出来；关键词用橙 / 绿加粗，与左侧词频表、任务列表呼应，把不同面板串起来</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>143 个</dd><dt>位图嵌入</dt><dd>无；19 个图标均为矢量（手绘 flaticon 风格 SVG + Fluent Emoji + Simple Icons 的 OpenAI 标志）</dd><dt>与原图差异</dt><dd>原字体（雅黑）x 高更大、笔画更粗，Open Sans 按行宽对齐后显得略轻；图标为重绘近似；draw.io 阴影比原图投影更柔</dd></dl></details>
+    <div class="links"><a href="drawio/08-scilitllm.drawio" download>⬇ .drawio</a><a href="original/08-scilitllm.png" target="_blank">原图 PNG</a><a href="render/08-scilitllm.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.70s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 09</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/09-merit.png" data-render="render/09-merit.png" data-original="original/09-merit.png" alt="MERIT">
+  </div>
+  <div class="body">
+    <h3>MERIT<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2506.03144" target="_blank">MERIT: Multilingual Semantic Retrieval with Interleaved Multi-Condition Query</a><span class="venue">NeurIPS 2025</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#EAEAEC" data-hex="#EAEAEC" title="点击复制 #EAEAEC"></button><button class="sw" style="--c:#FFEBF0" data-hex="#FFEBF0" title="点击复制 #FFEBF0"></button><button class="sw" style="--c:#E7FBFA" data-hex="#E7FBFA" title="点击复制 #E7FBFA"></button><button class="sw" style="--c:#FFC9D7" data-hex="#FFC9D7" title="点击复制 #FFC9D7"></button><button class="sw" style="--c:#BCF4F3" data-hex="#BCF4F3" title="点击复制 #BCF4F3"></button><button class="sw" style="--c:#FE2F63" data-hex="#FE2F63" title="点击复制 #FE2F63"></button><button class="sw" style="--c:#08DACF" data-hex="#08DACF" title="点击复制 #08DACF"></button></div><div class="fonts">Source Sans 3</div></div>
+    <ul class="take"><li>四列等宽浅色面板，每列顶部一个高饱和标题胶囊（白描边、压在面板上沿）；列内卡片用同色相深一档，颜色本身就区分流水线阶段</li><li>统一 flaticon 线性彩色图标 + 手绘斜线填充的下箭头（draw.io 原生 sketch + hachure 可复用），与规整圆角卡片形成对比，显得活泼</li><li>文字三级：白色粗体标题 &gt; 与列色同源的粉 / 青粗体小节名 &gt; 深灰正文；用直角括号连线（树形）汇总子方法，而不是箭头</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>105 个</dd><dt>位图嵌入</dt><dd>第 1 列商品照片拼贴裁自原图（去白底）；21 个 flaticon 风格图标用 vtracer 从原图矢量化为 SVG；国旗用 circle-flags SVG</dd><dt>与原图差异</dt><dd>Source Sans 3 代替雅黑 / Segoe UI，粗体略窄略重；矢量化图标边缘偏软、丢少量细节；手绘箭头抖动由 draw.io sketch 模式生成，与原图不完全一致；文件约 3 MB</dd></dl></details>
+    <div class="links"><a href="drawio/09-merit.drawio" download>⬇ .drawio</a><a href="original/09-merit.png" target="_blank">原图 PNG</a><a href="render/09-merit.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.75s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 10</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/10-mu-bench.png" data-render="render/10-mu-bench.png" data-original="original/10-mu-bench.png" alt="μ-Bench">
+  </div>
+  <div class="body">
+    <h3>μ-Bench<span class="fig">框架图</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2407.01791" target="_blank">μ-Bench: A Vision-Language Benchmark for Microscopy Understanding</a><span class="venue">arXiv 2024</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#FFFFFF" data-hex="#FFFFFF" title="点击复制 #FFFFFF"></button><button class="sw" style="--c:#5271FF" data-hex="#5271FF" title="点击复制 #5271FF"></button><button class="sw" style="--c:#FF3131" data-hex="#FF3131" title="点击复制 #FF3131"></button><button class="sw" style="--c:#545454" data-hex="#545454" title="点击复制 #545454"></button><button class="sw" style="--c:#F2F2F2" data-hex="#F2F2F2" title="点击复制 #F2F2F2"></button><button class="sw" style="--c:#7FDA57" data-hex="#7FDA57" title="点击复制 #7FDA57"></button><button class="sw" style="--c:#01BE62" data-hex="#01BE62" title="点击复制 #01BE62"></button><button class="sw" style="--c:#42A148" data-hex="#42A148" title="点击复制 #42A148"></button></div><div class="fonts">Libre Franklin</div></div>
+    <ul class="take"><li>卡片统一模板：白底大圆角卡片 + 同色描边 + 底部弧形色条写「序号. 步骤名」；弧形色条做成自定义形状，改 fillColor 即可换色复用</li><li>颜色只有两组：蓝 = Perception、红 = Cognition；卡片之间的灰色小标题 + 小图标标出步骤转换，三个渐深的绿色 chevron 表示阶段推进</li><li>每张卡都是「图标行 + 居中正文 + 底部色条」，正文统一 #545454 灰；缩略图用参数化 SVG（背景、太阳、两层山丘），8 种格式只靠换色区分</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>113 个</dd><dt>位图嵌入</dt><dd>4 处插画裁自原图并去白底（拿夹板的女性、电脑前的女性、彩色节点网络、3D Q/A 气泡）；其余为原生图元或矢量 SVG</dd><dt>与原图差异</dt><dd>Libre Franklin 代替 Canva Sans，字形略异；显微镜、纸堆、AI 芯片、漏斗、本体、齿轮等图标为手绘近似；风景缩略图简化为 2 种山丘模板；指点手势为改色 Fluent emoji，姿势略异；缩略图投影省略</dd></dl></details>
+    <div class="links"><a href="drawio/10-mu-bench.drawio" download>⬇ .drawio</a><a href="original/10-mu-bench.png" target="_blank">原图 PNG</a><a href="render/10-mu-bench.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.80s" data-type="workflow">
+  <div class="plate"><span><b>PLATE 11</b> · 流程图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/11-mssbench.png" data-render="render/11-mssbench.png" data-original="original/11-mssbench.png" alt="MSSBench">
+  </div>
+  <div class="body">
+    <h3>MSSBench<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2410.06172" target="_blank">Multimodal Situational Safety</a><span class="venue">arXiv 2024</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#C6E6B4" data-hex="#C6E6B4" title="点击复制 #C6E6B4"></button><button class="sw" style="--c:#94C8F7" data-hex="#94C8F7" title="点击复制 #94C8F7"></button><button class="sw" style="--c:#F5C0AE" data-hex="#F5C0AE" title="点击复制 #F5C0AE"></button><button class="sw" style="--c:#D5C6E5" data-hex="#D5C6E5" title="点击复制 #D5C6E5"></button><button class="sw" style="--c:#A6A6A6" data-hex="#A6A6A6" title="点击复制 #A6A6A6"></button><button class="sw" style="--c:#CCCCCC" data-hex="#CCCCCC" title="点击复制 #CCCCCC"></button><button class="sw" style="--c:#535D5E" data-hex="#535D5E" title="点击复制 #535D5E"></button></div><div class="fonts">Times New Roman · Lato</div></div>
+    <ul class="take"><li>四张流程卡片按 1→2→3→4 顺时针成环，粗灰块状箭头串联；白底卡片 + 四种浅色标题栏 + 左上角黑圈数字徽章，顺序一眼可读</li><li>卡片白底 + 居中柔和灰色外发光（无偏移阴影），标题栏是无边框浅色块，版面干净；正文统一 Times，公式粗斜体</li><li>同一套 Flaticon 风格图标（深描边 + 扁平填色）在各阶段反复出现，读者靠图标追踪数据流；右栏「Query / Images 标签 + 虚线分隔 + 安全/不安全照片对」可直接复用为数据集样例面板</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>154 个</dd><dt>位图嵌入</dt><dd>4 张示例照片（棒球、商场、两张微波炉场景）裁自原图；图标除 OpenAI / Bing（Simple Icons）外均为手写 SVG</dd><dt>与原图差异</dt><dd>文档、图片、魔鬼角、人物、漏斗等图标为手绘近似；卡片上圆角统一为单一半径；外发光略淡；Bing 字标用 Lato Bold 代替 Segoe UI；弯曲灰箭头为等宽 flexArrow，原图是渐细的</dd></dl></details>
+    <div class="links"><a href="drawio/11-mssbench.drawio" download>⬇ .drawio</a><a href="original/11-mssbench.png" target="_blank">原图 PNG</a><a href="render/11-mssbench.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.85s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 12</b> · 架构图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/12-clip.png" data-render="render/12-clip.png" data-original="original/12-clip.png" alt="CLIP">
+  </div>
+  <div class="body">
+    <h3>CLIP<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2103.00020" target="_blank">Learning Transferable Visual Models From Natural Language Supervision</a><span class="venue">ICML 2021</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#E1D5E7" data-hex="#E1D5E7" title="点击复制 #E1D5E7"></button><button class="sw" style="--c:#D5E8D4" data-hex="#D5E8D4" title="点击复制 #D5E8D4"></button><button class="sw" style="--c:#DAE8FC" data-hex="#DAE8FC" title="点击复制 #DAE8FC"></button><button class="sw" style="--c:#9673A6" data-hex="#9673A6" title="点击复制 #9673A6"></button><button class="sw" style="--c:#82B366" data-hex="#82B366" title="点击复制 #82B366"></button><button class="sw" style="--c:#6C8EBF" data-hex="#6C8EBF" title="点击复制 #6C8EBF"></button><button class="sw" style="--c:#4D4D4D" data-hex="#4D4D4D" title="点击复制 #4D4D4D"></button></div><div class="fonts">Helvetica · Times New Roman · Cutive Mono</div></div>
+    <ul class="take"><li>原图本身就是 draw.io 默认色板（紫=文本、绿=图像、蓝=正样本对角线），按 2x 导出，40×40 网格单元严格对齐</li><li>梯形编码器（direction=south）+ 正交总线箭头扇出到 T/I 行列，对比矩阵用对角蓝色高亮表达「配对」语义</li><li>等宽字体+粉色占位词（{object}/dog）表示提示模板，层叠卡片/照片用 10px 偏移暗示 batch</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>95 个</dd><dt>位图嵌入</dt><dd>4 张层叠训练照片 + 零样本预测的狗照片（裁自原图，外框为原生描边）</dd><dt>与原图差异</dt><dd>Cutive Mono 代替 Courier，略窄略细；省略号/竖省略号字形大小与基线略有差异；文字位置误差约 2px</dd></dl></details>
+    <div class="links"><a href="drawio/12-clip.drawio" download>⬇ .drawio</a><a href="original/12-clip.png" target="_blank">原图 PNG</a><a href="render/12-clip.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.90s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 13</b> · 架构图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/13-flamingo.png" data-render="render/13-flamingo.png" data-original="original/13-flamingo.png" alt="Flamingo">
+  </div>
+  <div class="body">
+    <h3>Flamingo<span class="fig">Fig. 3</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2204.14198" target="_blank">Flamingo: a Visual Language Model for Few-Shot Learning</a><span class="venue">NeurIPS 2022</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#E0F0FF" data-hex="#E0F0FF" title="点击复制 #E0F0FF"></button><button class="sw" style="--c:#6D9EEB" data-hex="#6D9EEB" title="点击复制 #6D9EEB"></button><button class="sw" style="--c:#E6D6FF" data-hex="#E6D6FF" title="点击复制 #E6D6FF"></button><button class="sw" style="--c:#6FA8DC" data-hex="#6FA8DC" title="点击复制 #6FA8DC"></button><button class="sw" style="--c:#FFE2E2" data-hex="#FFE2E2" title="点击复制 #FFE2E2"></button><button class="sw" style="--c:#FF6E96" data-hex="#FF6E96" title="点击复制 #FF6E96"></button><button class="sw" style="--c:#D9D9D9" data-hex="#D9D9D9" title="点击复制 #D9D9D9"></button></div><div class="fonts">Roboto Mono</div></div>
+    <ul class="take"><li>只用两种块色表达状态：蓝 + 雪花 = 冻结的预训练模块，淡紫 = 从零训练；左上角小图例一放，不看文字就知道哪些层在训练</li><li>全部文字用等宽字体，无圆角、无阴影，扁平块色像代码或幻灯片；「n-th / 1st」用小一号字，主名称大字，层级清楚</li><li>交错输入（灰底条：图 + 文）与处理后的 token 文本框上下对齐，正交折线把多路视觉特征分别接到各 GATED XATTN 层——「竖直主干 + 侧向注入」的走线可直接复用</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>58 个</dd><dt>位图嵌入</dt><dd>4 张照片（大狗、大猫、灰条内的小狗小猫）裁自原图，边框为原生矩形；雪花与火烈鸟 logo 为手写 SVG</dd><dt>与原图差异</dt><dd>雪花略细；火烈鸟 logo 手绘，笔形略异；粗体等宽标签渲染宽约 2%；其余误差 1–2px</dd></dl></details>
+    <div class="links"><a href="drawio/13-flamingo.drawio" download>⬇ .drawio</a><a href="original/13-flamingo.png" target="_blank">原图 PNG</a><a href="render/13-flamingo.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:0.95s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 14</b> · 架构图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/14-blip2.png" data-render="render/14-blip2.png" data-original="original/14-blip2.png" alt="BLIP-2">
+  </div>
+  <div class="body">
+    <h3>BLIP-2<span class="fig">Fig. 1 草稿版</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2301.12597" target="_blank">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a><span class="venue">ICML 2023</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#FFFFFF" data-hex="#FFFFFF" title="点击复制 #FFFFFF"></button><button class="sw" style="--c:#147AC3" data-hex="#147AC3" title="点击复制 #147AC3"></button><button class="sw" style="--c:#FCF2CB" data-hex="#FCF2CB" title="点击复制 #FCF2CB"></button><button class="sw" style="--c:#E9E9E9" data-hex="#E9E9E9" title="点击复制 #E9E9E9"></button><button class="sw" style="--c:#7F7F7F" data-hex="#7F7F7F" title="点击复制 #7F7F7F"></button><button class="sw" style="--c:#FBB19B" data-hex="#FBB19B" title="点击复制 #FBB19B"></button><button class="sw" style="--c:#FAD865" data-hex="#FAD865" title="点击复制 #FAD865"></button></div><div class="fonts">Helvetica</div></div>
+    <ul class="take"><li>配色极简：只有一种饱和蓝（冻结的大模型）+ 一块奶油黄（可训练模块），其余全是灰（箭头、描边、虚线框），焦点自然落在中间</li><li>梯形宽窄表达信息压缩：Image Encoder 左宽右窄、LLM 反过来，不看文字也能感到「压缩再展开」；两块虚线面板并列两阶段，上写目标、下写手段</li><li>灰底灰边胖箭头统一 2.5px 描边，彩色小方块 = query token，白色雪花贴在模块角上 = 冻结；这套组件可直接画任何「冻结编码器 + 适配器 + LLM」结构</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>33 个</dd><dt>位图嵌入</dt><dd>无；雪花和红宝石为手写 SVG</dd><dt>与原图差异</dt><dd>注：此图取自 arXiv 源码包中被注释掉的早期 Figure 1（模块名 GemFormer），正式发表版为 Q-Former 示例图。原图字体为 Helvetica Neue，渲染用 Liberation Sans，Q / g 等字形略异；朝上的胖箭头略窄略长；文字位置误差 2px 以内</dd></dl></details>
+    <div class="links"><a href="drawio/14-blip2.drawio" download>⬇ .drawio</a><a href="original/14-blip2.png" target="_blank">原图 PNG</a><a href="render/14-blip2.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:1.00s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 15</b> · 架构图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/15-dit.png" data-render="render/15-dit.png" data-original="original/15-dit.png" alt="DiT">
+  </div>
+  <div class="body">
+    <h3>DiT<span class="fig">Fig. 3</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2212.09748" target="_blank">Scalable Diffusion Models with Transformers</a><span class="venue">ICCV 2023</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#F3F3F6" data-hex="#F3F3F6" title="点击复制 #F3F3F6"></button><button class="sw" style="--c:#F9F9FB" data-hex="#F9F9FB" title="点击复制 #F9F9FB"></button><button class="sw" style="--c:#C6DAFD" data-hex="#C6DAFD" title="点击复制 #C6DAFD"></button><button class="sw" style="--c:#D4D7E3" data-hex="#D4D7E3" title="点击复制 #D4D7E3"></button><button class="sw" style="--c:#C3E3BD" data-hex="#C3E3BD" title="点击复制 #C3E3BD"></button><button class="sw" style="--c:#F9CC8B" data-hex="#F9CC8B" title="点击复制 #F9CC8B"></button><button class="sw" style="--c:#949494" data-hex="#949494" title="点击复制 #949494"></button></div><div class="fonts">Helvetica · Times New Roman</div></div>
+    <ul class="take"><li>同一套积木（LayerNorm / Scale / Attention / FFN 圆角块 + ⊕ 残差）用三次：主变体饱和色 + 黑线，两个对照变体整体褪色（浅填充 + 灰线灰字）——靠褪色表达次要，不需要图例</li><li>颜色按功能：蓝 = 归一化 / 调制，橙 = 注意力，绿 = 前馈 / 输出，灰 = 输入；左侧整体结构与右侧放大模块之间用虚线梯形（放大镜）连接</li><li>全图一种无衬线字体 + 斜体衬线数学符号；线条粗、箭头小、圆角统一；残差走左侧直角折线，α / β / γ 从右侧 MLP 竖线横向接入</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>129 个</dd><dt>位图嵌入</dt><dd>无（全部为原生图元与文字）</dd><dt>与原图差异</dt><dd>Helvetica 在本机渲染为 Liberation Sans，标签字号缩小约 3.5% 以对齐宽度；α / β / γ 用 Times 斜体代替 Cambria Math，字形略异；几何误差约 1px</dd></dl></details>
+    <div class="links"><a href="drawio/15-dit.drawio" download>⬇ .drawio</a><a href="original/15-dit.png" target="_blank">原图 PNG</a><a href="render/15-dit.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:1.05s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 16</b> · 架构图 · arXiv 经典</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/16-mamba.png" data-render="render/16-mamba.png" data-original="original/16-mamba.png" alt="Mamba">
+  </div>
+  <div class="body">
+    <h3>Mamba<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2312.00752" target="_blank">Mamba: Linear-Time Sequence Modeling with Selective State Spaces</a><span class="venue">COLM 2024</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#FBE5D6" data-hex="#FBE5D6" title="点击复制 #FBE5D6"></button><button class="sw" style="--c:#E2F0D9" data-hex="#E2F0D9" title="点击复制 #E2F0D9"></button><button class="sw" style="--c:#DDEAF7" data-hex="#DDEAF7" title="点击复制 #DDEAF7"></button><button class="sw" style="--c:#C45A11" data-hex="#C45A11" title="点击复制 #C45A11"></button><button class="sw" style="--c:#ED7D31" data-hex="#ED7D31" title="点击复制 #ED7D31"></button><button class="sw" style="--c:#548234" data-hex="#548234" title="点击复制 #548234"></button><button class="sw" style="--c:#2E74B6" data-hex="#2E74B6" title="点击复制 #2E74B6"></button></div><div class="fonts">Open Sans · Open Sans Condensed · Caladea · Times New Roman</div></div>
+    <ul class="take"><li>Office 主题色体系：每类元素一组「浅填充 + 深描边」——状态橙、参数绿、选择机制蓝；连线颜色与所属块一致，不用图例也能分组</li><li>4 条平行通道线 + 统一半径圆角折线，把「每个通道独立经过 A、由 B_t 注入、向 C_t 输出」画成层层错开的嵌套 L 形；h 用 4 层错位堆叠框表示状态扩展维度</li><li>右下角两段式金字塔（SRAM 橙 / HBM 绿）旁注硬件层级，直接复用主图色板；数学符号用 Cambria 斜体大字、说明用窄体粗体小字，层次分明</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>84 个</dd><dt>位图嵌入</dt><dd>无</dd><dt>与原图差异</dt><dd>Cambria Math 用 Caladea 代替，h_{t−1} 的减号略窄；draw.io 空心箭头比 PowerPoint 略细；右侧出口箭头用折线绘制；文字位置误差约 3px</dd></dl></details>
+    <div class="links"><a href="drawio/16-mamba.drawio" download>⬇ .drawio</a><a href="original/16-mamba.png" target="_blank">原图 PNG</a><a href="render/16-mamba.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:1.10s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 17</b> · 架构图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/17-llama-omni.png" data-render="render/17-llama-omni.png" data-original="original/17-llama-omni.png" alt="LLaMA-Omni">
+  </div>
+  <div class="body">
+    <h3>LLaMA-Omni<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2409.06666" target="_blank">LLaMA-Omni: Seamless Speech Interaction with Large Language Models</a><span class="venue">arXiv 2024</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#DDEBF8" data-hex="#DDEBF8" title="点击复制 #DDEBF8"></button><button class="sw" style="--c:#CBE1F8" data-hex="#CBE1F8" title="点击复制 #CBE1F8"></button><button class="sw" style="--c:#FCDDC8" data-hex="#FCDDC8" title="点击复制 #FCDDC8"></button><button class="sw" style="--c:#DEF3D2" data-hex="#DEF3D2" title="点击复制 #DEF3D2"></button><button class="sw" style="--c:#B6E1D0" data-hex="#B6E1D0" title="点击复制 #B6E1D0"></button><button class="sw" style="--c:#F38180" data-hex="#F38180" title="点击复制 #F38180"></button><button class="sw" style="--c:#8C1C13" data-hex="#8C1C13" title="点击复制 #8C1C13"></button></div><div class="fonts">Cabin · Times New Roman · Courier New · Alegreya Sans</div></div>
+    <ul class="take"><li>模块画成横向通栏粉彩条（蓝 = 编 / 解码，桃 = 适配 / 上采样，绿 = LLM），左侧主图与右侧两个训练阶段共用一套颜色，靠颜色对上模块</li><li>token 行用红 / 黄 / 青三色分组，最后一组半透明淡出再接「…」表达流式生成；细灰半透明连线从色条下穿过，交代注意力关系却不抢视觉</li><li>注释层用暗红打字机字体（latency / simultaneous generation / Stage），与主体无衬线分开；🔥 / ❄️ 标可训练与冻结，点划竖线隔开推理图与训练阶段</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>440 个</dd><dt>位图嵌入</dt><dd>仅 llama 圆形 logo 为位图（紧裁、去背景）；麦克风为 vtracer 矢量化 SVG；火焰为 Fluent emoji，雪花为改色 Twemoji</dd><dt>与原图差异</dt><dd>Gill Sans 用 Cabin 代替，标题用 Alegreya Sans Bold；ℒ 为通用花体字形；token 方块用圆角矩形代替原图略呈桶形的形状；注意力连线按因果规则生成而非逐条描摹</dd></dl></details>
+    <div class="links"><a href="drawio/17-llama-omni.drawio" download>⬇ .drawio</a><a href="original/17-llama-omni.png" target="_blank">原图 PNG</a><a href="render/17-llama-omni.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:1.15s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 18</b> · 架构图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/18-mha2mla.png" data-render="render/18-mha2mla.png" data-original="original/18-mha2mla.png" alt="MHA2MLA">
+  </div>
+  <div class="body">
+    <h3>MHA2MLA<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2502.14837" target="_blank">Towards Economical Inference: Enabling DeepSeek&#x27;s Multi-Head Latent Attention in Any Transformer-based LLMs</a><span class="venue">arXiv 2025</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#FEE0D6" data-hex="#FEE0D6" title="点击复制 #FEE0D6"></button><button class="sw" style="--c:#6A4E8C" data-hex="#6A4E8C" title="点击复制 #6A4E8C"></button><button class="sw" style="--c:#D9D9D9" data-hex="#D9D9D9" title="点击复制 #D9D9D9"></button><button class="sw" style="--c:#B393C5" data-hex="#B393C5" title="点击复制 #B393C5"></button><button class="sw" style="--c:#EAA0CF" data-hex="#EAA0CF" title="点击复制 #EAA0CF"></button><button class="sw" style="--c:#B0A6C2" data-hex="#B0A6C2" title="点击复制 #B0A6C2"></button><button class="sw" style="--c:#4B2F5A" data-hex="#4B2F5A" title="点击复制 #4B2F5A"></button></div><div class="fonts">MathJax TeX · Times New Roman</div></div>
+    <ul class="take"><li>用视觉编码代替文字：紫色梯形 = Linear（口宽向上降维、窄向上升维），淡紫边框 = 施加 RoPE，斜纹 = Cached，灰色横带 = Aligned——四种编码一个图例讲清</li><li>三栏 (a)(b)(c) 共用同一套行高网格（x、W、q/k、RoPE、输出），横向一眼看出差异；灰色对齐带跨栏贯穿，直接点出 MHA2MLA 与 MLA 输出对齐</li><li>立体感靠几层偏移的浅色副本而不是模糊投影；「拆分」用白色窄条 + 黑虚线 + 剪刀；配色克制：粉、紫、灰 + 一点黑</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>280 个</dd><dt>位图嵌入</dt><dd>无；梯形、多边形、hatch 斜纹填充、文字均为原生，剪刀为手写 SVG</dd><dt>与原图差异</dt><dd>粉色框的模糊投影用 2 层偏移副本近似；原图横纵比例略失真，数学字形比例按标签单独调过；斜纹为干净直线（原图 JPEG 有锯齿）；数学字体从 jsdelivr 加载，断网时退化为普通衬线</dd></dl></details>
+    <div class="links"><a href="drawio/18-mha2mla.drawio" download>⬇ .drawio</a><a href="original/18-mha2mla.png" target="_blank">原图 PNG</a><a href="render/18-mha2mla.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:1.20s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 19</b> · 架构图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/19-janusvln.png" data-render="render/19-janusvln.png" data-original="original/19-janusvln.png" alt="JanusVLN">
+  </div>
+  <div class="body">
+    <h3>JanusVLN<span class="fig">Fig. 2</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2509.22548" target="_blank">JanusVLN: Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Language Navigation</a><span class="venue">arXiv 2025</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#FFF2CD" data-hex="#FFF2CD" title="点击复制 #FFF2CD"></button><button class="sw" style="--c:#FEE7F1" data-hex="#FEE7F1" title="点击复制 #FEE7F1"></button><button class="sw" style="--c:#FCCFE4" data-hex="#FCCFE4" title="点击复制 #FCCFE4"></button><button class="sw" style="--c:#E8FDFF" data-hex="#E8FDFF" title="点击复制 #E8FDFF"></button><button class="sw" style="--c:#CFFAFF" data-hex="#CFFAFF" title="点击复制 #CFFAFF"></button><button class="sw" style="--c:#EE7DB2" data-hex="#EE7DB2" title="点击复制 #EE7DB2"></button><button class="sw" style="--c:#7EEAF4" data-hex="#7EEAF4" title="点击复制 #7EEAF4"></button></div><div class="fonts">Times New Roman</div></div>
+    <ul class="take"><li>左右镜像对称：左粉 = 2D 语义支路，右青 = 3D 空间支路，在中轴 ⊕ 汇合后进 LLM；中间的大脑图标半粉半青，直接把「双记忆」画出来</li><li>同一支路内填充、描边、连线全用同一色相的深浅（Fusion 最浅、Encoder 更深、连线最饱和）；3D 支路的 token 用立方体、2D 用圆角方块，形状本身区分模态</li><li>记忆模块 = 深灰圆角大框 + 虚线小框标窗口 + 细虚线「放大线」连到大脑；底部视频帧按时间排开、当前帧双色描边，这个版式可直接套到任何双流记忆架构图</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>99 个</dd><dt>位图嵌入</dt><dd>LLM 框内的粉青狼头插画、2 张视频帧、当前帧、3D 房屋渲染（裁自原图）；对话气泡、机器狗、4 个动作标志、大脑、摄像机为手写 SVG，地球为改色 Fluent emoji</dd><dt>与原图差异</dt><dd>draw.io 无渐变描边，⊕ 圆环、⊕→LLM 箭头、当前帧边框用 2–3 段纯色近似；机器狗与大脑图标为简化重绘；LLM 框的淡黄外发光偏弱</dd></dl></details>
+    <div class="links"><a href="drawio/19-janusvln.drawio" download>⬇ .drawio</a><a href="original/19-janusvln.png" target="_blank">原图 PNG</a><a href="render/19-janusvln.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+<article class="card r" style="animation-delay:1.25s" data-type="architecture">
+  <div class="plate"><span><b>PLATE 20</b> · 架构图 · PaperGallery 策展</span>
+    <div class="seg"><button class="on" data-v="render">draw.io 复刻</button><button  data-v="original">原图</button></div></div>
+  <div class="viewer">
+    <img loading="lazy" src="render/20-motus.png" data-render="render/20-motus.png" data-original="original/20-motus.png" alt="Motus">
+  </div>
+  <div class="body">
+    <h3>Motus<span class="fig">Fig. 1</span></h3>
+    <p class="paper"><a href="https://arxiv.org/abs/2512.13030" target="_blank">Motus: A Unified Latent Action World Model</a><span class="venue">arXiv 2025</span></p>
+    <div class="meta"><div class="sws"><button class="sw" style="--c:#F8F6F9" data-hex="#F8F6F9" title="点击复制 #F8F6F9"></button><button class="sw" style="--c:#FFF1FF" data-hex="#FFF1FF" title="点击复制 #FFF1FF"></button><button class="sw" style="--c:#FFF3E5" data-hex="#FFF3E5" title="点击复制 #FFF3E5"></button><button class="sw" style="--c:#EFEAFF" data-hex="#EFEAFF" title="点击复制 #EFEAFF"></button><button class="sw" style="--c:#6B1A2E" data-hex="#6B1A2E" title="点击复制 #6B1A2E"></button><button class="sw" style="--c:#6E3A14" data-hex="#6E3A14" title="点击复制 #6E3A14"></button><button class="sw" style="--c:#5C337F" data-hex="#5C337F" title="点击复制 #5C337F"></button></div><div class="fonts">Times New Roman · Caladea</div></div>
+    <ul class="take"><li>三个专家各一套「浅底+深描边+同色文字」三元配色（酒红/棕/紫），颜色直接标识模态</li><li>横贯三栏的渐变长条（粉→杏黄→淡紫）表示联合注意力，把三列在视觉上缝合在一起</li><li>双层错位圆角面板营造层叠深度；token 小方块和编码/解码器上下对称，τ 条件用侧边折线箭头注入 AdaLN</li></ul>
+    <details><summary>复刻说明</summary><dl><dt>可编辑图元</dt><dd>73 个</dd><dt>位图嵌入</dt><dd>顶部视频帧、左下加噪帧、右下机器人帧与 4 个噪声方块（裁自原图）；机械臂图标为手写 SVG，雪花为改色的 Fluent SVG</dd><dt>与原图差异</dt><dd>三段渐变条由两段渐变拼接，中间有极淡接缝；机械臂图标为近似；τ 与公式用 Times/Caladea 代替 Cambria Math，字形略异</dd></dl></details>
+    <div class="links"><a href="drawio/20-motus.drawio" download>⬇ .drawio</a><a href="original/20-motus.png" target="_blank">原图 PNG</a><a href="render/20-motus.png" target="_blank">复刻 PNG</a></div>
+  </div>
+</article>
+</main>
+
+<section>
+  <h2 style="margin-top:80px"><span class="num">03</span>复刻 20 张图之后的六条心法</h2>
+  <ul class="rules"><li><b>一图一套设计系统</b><span>1 个字体家族、2–3 个主色、统一线宽与圆角。BLIP-2 只有一蓝一黄加灰，Llama 2 只用一组蓝灰，照样耐看。</span></li><li><b>颜色即语义，省掉图例</b><span>冻结 = 蓝 + 雪花、可训练 = 橙 / 紫 + 火焰（Flamingo、AgentThink、LLaMA-Omni）；LC-R1 的序列色条本身就是图例。</span></li><li><b>形状也是编码</b><span>Llama 2：数据 = 圆环、过程 = 菱形、模型 = 椭圆；MHA2MLA：梯形 = Linear、斜纹 = Cached；JanusVLN：立方体 = 3D token。</span></li><li><b>阶段 = 等宽面板 + 彩色标题条</b><span>MERIT、AgentThink、μ-Bench、MSSBench 都是这套：浅底面板 + 高饱和标题胶囊或编号徽章，阶段间用粗箭头 / chevron。</span></li><li><b>用褪色和对称讲主次</b><span>DiT 把对照变体整体褪色；ToT 四栏同骨架只改中间；JanusVLN 左右镜像、Motus 三栏并列，差异一眼可见。</span></li><li><b>线条克制，强调色只给关键流</b><span>细灰连线从模块下方穿过（LLaMA-Omni），折线统一圆角（Mamba）；只有反馈环 / 训练流用亮色或渐变（InstructGPT、GRAPE）。</span></li></ul>
+</section>
+
+<footer>
+  候选池 · <a href="https://longhz140516.github.io/PaperGallery/images/pipeline/" target="_blank">PaperGallery / Pipeline</a>（256 张）+ arXiv 源码包中的原始矢量图<br>
+  复刻工具链 · draw.io XML → 官方 viewer + headless Chromium 渲染 → 与原图逐轮对比（scripts/render_drawio.py）<br>
+  图标 · Fluent Emoji Flat / Tabler / Simple Icons（矢量 SVG 内嵌）；照片类素材从原图裁切
+</footer>
+</div>
+
+<div class="lb" id="lb"><div class="x">ESC 关闭 ✕</div><figure><figcaption>原图 ORIGINAL</figcaption><img id="lbo"></figure><figure><figcaption>DRAW.IO 复刻</figcaption><img id="lbr"></figure></div>
+<div class="toast" id="toast"></div>
+<script>
+  document.querySelectorAll('.seg button').forEach(b => b.onclick = ev => {
+    ev.stopPropagation();
+    const v = b.closest('.card'), img = v.querySelector('.viewer img');
+    v.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b));
+    img.src = img.dataset[b.dataset.v];
+  });
+  const lb = document.getElementById('lb');
+  document.querySelectorAll('.viewer').forEach(v => v.onclick = () => {
+    const img = v.querySelector('img'), done = v.closest('.card').querySelector('[data-v=render]');
+    document.getElementById('lbo').src = img.dataset.original;
+    document.getElementById('lbr').src = done ? img.dataset.render : '';
+    document.getElementById('lbr').parentElement.style.display = done ? '' : 'none';
+    lb.classList.add('on');
+  });
+  lb.onclick = () => lb.classList.remove('on');
+  document.onkeydown = e => { if (e.key === 'Escape') lb.classList.remove('on'); };
+  document.querySelectorAll('.filters button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.filters button').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.card').forEach(c => c.classList.toggle('hide', b.dataset.f !== 'all' && c.dataset.type !== b.dataset.f));
+  });
+  const toast = document.getElementById('toast');
+  document.querySelectorAll('.sw').forEach(s => s.onclick = () => {
+    navigator.clipboard && navigator.clipboard.writeText(s.dataset.hex);
+    toast.textContent = '已复制 ' + s.dataset.hex; toast.classList.add('on');
+    setTimeout(() => toast.classList.remove('on'), 1200);
+  });
+</script>
+</body>
+</html>
+

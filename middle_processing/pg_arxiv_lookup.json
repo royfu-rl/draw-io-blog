@@ -1,0 +1,118 @@
+{
+ "05-agentthink": {
+  "title": "AgentThink: A Unified Framework for Tool-Augmented Chain-of-Thought Reasoning in Vision-Language Models for Autonomous Driving",
+  "conference": "EMNLP",
+  "year": "2025",
+  "hits": [
+   [
+    "2505.15298v4",
+    "AgentThink: A Unified Framework for Tool-Augmented Chain-of-Thought Reasoning in Vision-La"
+   ]
+  ]
+ },
+ "06-lc-r1": {
+  "title": "Optimizing Length Compression in Large Reasoning Models",
+  "conference": "arXiv",
+  "year": "2025",
+  "hits": [
+   [
+    "2506.14755v2",
+    "Optimizing Length Compression in Large Reasoning Models"
+   ]
+  ]
+ },
+ "07-grape": {
+  "title": "GRAPE: Generalizing Robot Policy via Preference Alignment",
+  "conference": "arXiv",
+  "year": "2024",
+  "hits": [
+   [
+    "2411.19309v2",
+    "GRAPE: Generalizing Robot Policy via Preference Alignment"
+   ]
+  ]
+ },
+ "08-scilitllm": {
+  "title": "SciLitLLM: How to Adapt LLMs for Scientific Literature Understanding",
+  "conference": "arXiv",
+  "year": "2024",
+  "hits": [
+   [
+    "2408.15545v5",
+    "SciLitLLM: How to Adapt LLMs for Scientific Literature Understanding"
+   ]
+  ]
+ },
+ "09-merit": {
+  "title": "MERIT: Multilingual Semantic Retrieval with Interleaved Multi-Condition Query",
+  "conference": "NeurIPS",
+  "year": "2025",
+  "hits": [
+   [
+    "2506.03144v3",
+    "MERIT: Multilingual Semantic Retrieval with Interleaved Multi-Condition Query"
+   ]
+  ]
+ },
+ "10-mu-bench": {
+  "title": "μ-Bench: A Vision-Language Benchmark for Microscopy Understanding",
+  "conference": "arXiv",
+  "year": "2024",
+  "hits": [
+   [
+    "2407.01791v1",
+    "μ-Bench: A Vision-Language Benchmark for Microscopy Understanding"
+   ]
+  ]
+ },
+ "11-mssbench": {
+  "title": "Multimodal Situational Safety",
+  "conference": "arXiv",
+  "year": "2024",
+  "hits": [
+   [
+    "2410.06172v2",
+    "Multimodal Situational Safety"
+   ]
+  ]
+ },
+ "17-llama-omni": {
+  "title": "LLaMA-Omni: Seamless Speech Interaction with Large Language Models",
+  "conference": "arXiv",
+  "year": "2024",
+  "hits": [
+   [
+    "2409.06666v2",
+    "LLaMA-Omni: Seamless Speech Interaction with Large Language Models"
+   ]
+  ]
+ },
+ "18-mha2mla": {
+  "title": "Towards Economical Inference: Enabling DeepSeek's Multi-Head Latent Attention in Any Transformer-based LLMs",
+  "conference": "arXiv",
+  "year": "2025",
+  "hits": []
+ },
+ "19-janusvln": {
+  "title": "JanusVLN: Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Language Navigation",
+  "conference": "arXiv",
+  "year": "2025",
+  "hits": [
+   [
+    "2509.22548v2",
+    "JanusVLN: Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Languag"
+   ]
+  ]
+ },
+ "20-motus": {
+  "title": "Motus: A Unified Latent Action World Model",
+  "conference": "arXiv",
+  "year": "2025",
+  "hits": [
+   [
+    "2512.13030v2",
+    "Motus: A Unified Latent Action World Model"
+   ]
+  ]
+ }
+}

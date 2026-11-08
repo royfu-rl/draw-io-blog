@@ -1,0 +1,603 @@
+[
+ {
+  "id": "01-instructgpt",
+  "name": "InstructGPT",
+  "paper": "Training language models to follow instructions with human feedback",
+  "venue": "NeurIPS 2022",
+  "arxiv": "2203.02155",
+  "fig": "Fig. 2",
+  "type": "workflow",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Inter"
+  ],
+  "palette": [
+   "#CAE4F1",
+   "#F5F5F4",
+   "#000000",
+   "#404451",
+   "#8E8D9F",
+   "#06B6FE"
+  ],
+  "takeaways_zh": [
+   "三栏等宽版式：左侧大号说明文字 + 右侧一列等宽卡片，栏间只用 1px 极浅竖线分隔；阅读顺序靠位置表达，不需要额外框线",
+   "卡片只有两色且无描边：浅蓝 = 输入 prompt、暖灰 = 处理步骤，统一大圆角；数据流箭头灰紫、「训练」箭头与反馈环亮蓝，两类箭头一眼分开",
+   "细节：箭头尾部从白渐变到箭头色；神经网络小图标的节点带一圈底色描边形成「断线光晕」；收拢四个输出的括号用大半径圆弧"
+  ],
+  "raster_embeds": "无；标注员头像与青蛙剪影从原图描摹为 SVG，月亮 / 铅笔 / 文档为手写 SVG，其余为原生图元",
+  "known_diffs": "裁掉了原图的白边；Inter 与 OpenAI 原字体接近但不完全一致，部分单词窄 1–3%；头像发丝简化为单一黑色形状"
+ },
+ {
+  "id": "02-llama2",
+  "name": "Llama 2",
+  "paper": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+  "venue": "Tech Report 2023",
+  "arxiv": "2307.09288",
+  "fig": "Fig. 4",
+  "type": "workflow",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Quicksand",
+   "Helvetica"
+  ],
+  "palette": [
+   "#ECF0F2",
+   "#DFE3E8",
+   "#A3B7C2",
+   "#B8C1CC",
+   "#4C5961",
+   "#667788",
+   "#000000"
+  ],
+  "takeaways_zh": [
+   "整张图只用一组偏蓝的灰：面板底、次级节点、模型椭圆、描边与弯箭头逐级加深，只有文字用纯黑，整体柔和但层次清楚",
+   "形状即类型：数据 = 细圆环 + 图标，过程 = 菱形，奖励模型 = 灰椭圆，模型 = 实心蓝灰椭圆（Llama-2-Chat 再加深色描边）；分组用三种边框：虚线 = 阶段、实心底 = 微调、点线 = RLHF 子循环",
+   "面板标签放在小底块上「打断」边框，比放在框外更紧凑；三支粗弯箭头组成 RLHF 闭环；细连线统一用轻量空心箭头"
+  ],
+  "raster_embeds": "无；对话气泡、人物、盾牌、手 + 勾、云 + 数据库图标从原图描摹为分层 SVG，其余为原生图元",
+  "known_diffs": "Quicksand 与原几何无衬线字体接近，逐行用字距对齐宽度，RM 宽约 3px；粗弯箭头为二次曲线，与原路径差 2–4px；白色 Llama-2 标签略淡"
+ },
+ {
+  "id": "03-dpo",
+  "name": "DPO",
+  "paper": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+  "venue": "NeurIPS 2023",
+  "arxiv": "2305.18290",
+  "fig": "Fig. 1",
+  "type": "workflow",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Nunito"
+  ],
+  "palette": [
+   "#F2E2E2",
+   "#DCEEEE",
+   "#5E9E9A",
+   "#B33A2E",
+   "#8FAAC4",
+   "#C495B6",
+   "#111111"
+  ],
+  "takeaways_zh": [
+   "左右双面板对照：同一套图元（偏好气泡、箭头、神经网络）复用，差异一眼可见",
+   "面板用极淡的同色系底（粉 vs 青），强调色只给关键结论词（maximum likelihood / reinforcement learning）",
+   "圆体 Nunito + 大字号短标签，几乎不用框线，靠留白和字重分层"
+  ],
+  "raster_embeds": "无；奖杯为 Fluent Emoji 矢量 SVG",
+  "known_diffs": "奖杯图标造型与原图略有不同"
+ },
+ {
+  "id": "04-tree-of-thoughts",
+  "name": "Tree of Thoughts",
+  "paper": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+  "venue": "NeurIPS 2023",
+  "arxiv": "2305.10601",
+  "fig": "Fig. 1",
+  "type": "workflow",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Ubuntu"
+  ],
+  "palette": [
+   "#D9EAD3",
+   "#EDEDED",
+   "#93C47D",
+   "#3A8B17",
+   "#FFDADA",
+   "#FFF6F6",
+   "#585858"
+  ],
+  "takeaways_zh": [
+   "四栏并排、同一套「Input 椭圆→思维方块→Output 椭圆」骨架，只改中间结构，对比一眼可见",
+   "颜色即语义：深绿=被选路径、浅绿=可行、粉/浅粉=被剪枝；绿色粗箭头叠在细粉箭头之上突出搜索路径",
+   "极简图元（灰框+深灰 2px 线+虚线分隔+虚线图例框），统一 Ubuntu 字体，Google Slides 默认色板即可复用"
+  ],
+  "raster_embeds": "无",
+  "known_diffs": "Ubuntu 字体渲染略粗、宽度差约 3px；大括号由两段曲线拼成；绿色箭头头部大小差 1–2px"
+ },
+ {
+  "id": "05-agentthink",
+  "name": "AgentThink",
+  "paper": "AgentThink: A Unified Framework for Tool-Augmented Chain-of-Thought Reasoning in Vision-Language Models for Autonomous Driving",
+  "venue": "EMNLP 2025",
+  "arxiv": "2505.15298",
+  "fig": "Fig. 2",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Comic Relief",
+   "Carlito",
+   "Montserrat",
+   "Didact Gothic",
+   "Times New Roman"
+  ],
+  "palette": [
+   "#E3F1D8",
+   "#FCE5D5",
+   "#D4F4F1",
+   "#FFF2D0",
+   "#FED967",
+   "#F3FFFD",
+   "#102B82"
+  ],
+  "takeaways_zh": [
+   "三段式布局：每列 = 带投影的圆角页签 + 同色系描边面板，绿 / 橙 / 青三种色相区分数据、训练、推理；面板之间用渐变胖箭头衔接，颜色从上一列过渡到下一列",
+   "层级靠线型区分：实线粗描边 = 实体模块，细虚线 = 阶段内分组（SFT、Pretrained VLM），粗虚线大框 + 两条放大引线 = 把 GRPO 展开成奖励细节",
+   "通篇手写 Comic 字体 + 大量 lineal-color 小图标和吉祥物，学术图显得亲和；可复用部件：图标 + 文字的指标列表、虚线小方块里的 ✗✗✓✗ 采样结果、雪花 / 火焰的 Frozen / Trainable 图例"
+  ],
+  "raster_embeds": "仅 2 张水豚吉祥物插画裁自原图；其余 25 个图标均为矢量（手写 SVG + Fluent 车 / 火焰 + Simple Icons 的 OpenAI 标志）",
+  "known_diffs": "地图、Qwen 标志、勋章、灯泡、工具等手绘图标为近似；原图是 JPEG，文字笔画更粗，复刻里 Comic / Montserrat 略细，个别行宽差 2–4%"
+ },
+ {
+  "id": "06-lc-r1",
+  "name": "LC-R1",
+  "paper": "Optimizing Length Compression in Large Reasoning Models",
+  "venue": "arXiv 2025",
+  "arxiv": "2506.14755",
+  "fig": "Fig. 2",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Jost"
+  ],
+  "palette": [
+   "#F2F2F2",
+   "#FDF7F7",
+   "#F4FAF8",
+   "#2F8079",
+   "#32C9BA",
+   "#CD8495",
+   "#FED966",
+   "#A8D18D",
+   "#AB4344"
+  ],
+  "takeaways_zh": [
+   "每条推理序列画成一行固定高度的圆角色条：青 = 有效思考、粉 = 无效思考、细黄条 = </think>、绿 = 答案、红 = 错答；颜色本身就是图例，左右面板对照，压缩前后差异一眼可见",
+   "布局 = 浅灰大圆角底板 + 三块双线描边带柔和阴影的白面板；阶段之间用实心黑三角当箭头，比普通箭头醒目又不乱",
+   "图标统一纯黑剪影（人头、奖章、眼睛、刷新），与彩色序列条拉开层次；灰色括号线 + Output-k 标注、⋮ 省略、⊕ 汇流点都可直接复用"
+  ],
+  "raster_embeds": "无；7 个黑色剪影图标用 potrace 从原图矢量化后以 SVG 嵌入",
+  "known_diffs": "Jost 代替 Futura，字形与字距略异；描摹图标边缘略有抖动；面板阴影为 draw.io 偏移阴影，原图是四周柔光；虚线空心箭头用 flexArrow 近似"
+ },
+ {
+  "id": "07-grape",
+  "name": "GRAPE",
+  "paper": "GRAPE: Generalizing Robot Policy via Preference Alignment",
+  "venue": "arXiv 2024",
+  "arxiv": "2411.19309",
+  "fig": "框架图",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Albert Sans",
+   "JetBrains Mono",
+   "Times New Roman"
+  ],
+  "palette": [
+   "#FAF1EA",
+   "#F3F2FA",
+   "#EBAB88",
+   "#BF5019",
+   "#A87FC1",
+   "#8AA7C4",
+   "#6A3988"
+  ],
+  "takeaways_zh": [
+   "上下两段用极浅的桃色 / 薰衣草色面板区分「生成」与「优化」两阶段，组件描边颜色跟随所在面板（上橙下紫蓝），分区一眼可见",
+   "跨面板反馈箭头用渐变（橙→紫、紫→蓝）把两段颜色缝起来，表达信息从上段流入下段；draw.io 里一条 flexArrow + gradientColor 即可",
+   "视觉语法统一：白底圆角框 + 5px 彩色描边 = 模型/集合；实心圆角色块 = 可枚举选项；粗黑直角折线 + 实心箭头 = 数据流；照片套点线框 = 视觉证据。可直接当 VLA / 机器人 pipeline 模板"
+  ],
+  "raster_embeds": "8 张机器人场景照片（初始状态、训练任务、(a) 的 4 帧、(b) 的 2 帧）裁自原图；关键点编号为原生图元叠在照片上",
+  "known_diffs": "Aptos 用 Albert Sans 代替，笔画略细；机器人、机械臂、葡萄、信息图标为手绘 SVG；原图 JPEG 的柔边与阴影在复刻中更锐利；文字位置误差约 3px"
+ },
+ {
+  "id": "08-scilitllm",
+  "name": "SciLitLLM",
+  "paper": "SciLitLLM: How to Adapt LLMs for Scientific Literature Understanding",
+  "venue": "arXiv 2024",
+  "arxiv": "2408.15545",
+  "fig": "Fig. 1",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Open Sans"
+  ],
+  "palette": [
+   "#E6EFDC",
+   "#E1EBF5",
+   "#F2F2F2",
+   "#FEF7E4",
+   "#EAB48A",
+   "#F9D87E",
+   "#343434"
+  ],
+  "takeaways_zh": [
+   "两层容器：点线大框 + 跨边框的浅绿胶囊标题（CPT / SFT）；内部圆角子面板把标题和小图标嵌进顶边缺口，层级清楚又不拥挤",
+   "箭头颜色有固定含义：橙色粗箭头 = 模型权重流（Qwen2 → Base → Instruct），黄色粗箭头 = 数据流，灰色细箭头 = 被过滤的数据，不看文字也能分清三种流",
+   "用对话气泡 + 头像 / 模型图标把 prompt 模板画出来；关键词用橙 / 绿加粗，与左侧词频表、任务列表呼应，把不同面板串起来"
+  ],
+  "raster_embeds": "无；19 个图标均为矢量（手绘 flaticon 风格 SVG + Fluent Emoji + Simple Icons 的 OpenAI 标志）",
+  "known_diffs": "原字体（雅黑）x 高更大、笔画更粗，Open Sans 按行宽对齐后显得略轻；图标为重绘近似；draw.io 阴影比原图投影更柔"
+ },
+ {
+  "id": "09-merit",
+  "name": "MERIT",
+  "paper": "MERIT: Multilingual Semantic Retrieval with Interleaved Multi-Condition Query",
+  "venue": "NeurIPS 2025",
+  "arxiv": "2506.03144",
+  "fig": "Fig. 2",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Source Sans 3"
+  ],
+  "palette": [
+   "#EAEAEC",
+   "#FFEBF0",
+   "#E7FBFA",
+   "#FFC9D7",
+   "#BCF4F3",
+   "#FE2F63",
+   "#08DACF"
+  ],
+  "takeaways_zh": [
+   "四列等宽浅色面板，每列顶部一个高饱和标题胶囊（白描边、压在面板上沿）；列内卡片用同色相深一档，颜色本身就区分流水线阶段",
+   "统一 flaticon 线性彩色图标 + 手绘斜线填充的下箭头（draw.io 原生 sketch + hachure 可复用），与规整圆角卡片形成对比，显得活泼",
+   "文字三级：白色粗体标题 > 与列色同源的粉 / 青粗体小节名 > 深灰正文；用直角括号连线（树形）汇总子方法，而不是箭头"
+  ],
+  "raster_embeds": "第 1 列商品照片拼贴裁自原图（去白底）；21 个 flaticon 风格图标用 vtracer 从原图矢量化为 SVG；国旗用 circle-flags SVG",
+  "known_diffs": "Source Sans 3 代替雅黑 / Segoe UI，粗体略窄略重；矢量化图标边缘偏软、丢少量细节；手绘箭头抖动由 draw.io sketch 模式生成，与原图不完全一致；文件约 3 MB"
+ },
+ {
+  "id": "10-mu-bench",
+  "name": "μ-Bench",
+  "paper": "μ-Bench: A Vision-Language Benchmark for Microscopy Understanding",
+  "venue": "arXiv 2024",
+  "arxiv": "2407.01791",
+  "fig": "框架图",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Libre Franklin"
+  ],
+  "palette": [
+   "#FFFFFF",
+   "#5271FF",
+   "#FF3131",
+   "#545454",
+   "#F2F2F2",
+   "#7FDA57",
+   "#01BE62",
+   "#42A148"
+  ],
+  "takeaways_zh": [
+   "卡片统一模板：白底大圆角卡片 + 同色描边 + 底部弧形色条写「序号. 步骤名」；弧形色条做成自定义形状，改 fillColor 即可换色复用",
+   "颜色只有两组：蓝 = Perception、红 = Cognition；卡片之间的灰色小标题 + 小图标标出步骤转换，三个渐深的绿色 chevron 表示阶段推进",
+   "每张卡都是「图标行 + 居中正文 + 底部色条」，正文统一 #545454 灰；缩略图用参数化 SVG（背景、太阳、两层山丘），8 种格式只靠换色区分"
+  ],
+  "raster_embeds": "4 处插画裁自原图并去白底（拿夹板的女性、电脑前的女性、彩色节点网络、3D Q/A 气泡）；其余为原生图元或矢量 SVG",
+  "known_diffs": "Libre Franklin 代替 Canva Sans，字形略异；显微镜、纸堆、AI 芯片、漏斗、本体、齿轮等图标为手绘近似；风景缩略图简化为 2 种山丘模板；指点手势为改色 Fluent emoji，姿势略异；缩略图投影省略"
+ },
+ {
+  "id": "11-mssbench",
+  "name": "MSSBench",
+  "paper": "Multimodal Situational Safety",
+  "venue": "arXiv 2024",
+  "arxiv": "2410.06172",
+  "fig": "Fig. 2",
+  "type": "workflow",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Times New Roman",
+   "Lato"
+  ],
+  "palette": [
+   "#C6E6B4",
+   "#94C8F7",
+   "#F5C0AE",
+   "#D5C6E5",
+   "#A6A6A6",
+   "#CCCCCC",
+   "#535D5E"
+  ],
+  "takeaways_zh": [
+   "四张流程卡片按 1→2→3→4 顺时针成环，粗灰块状箭头串联；白底卡片 + 四种浅色标题栏 + 左上角黑圈数字徽章，顺序一眼可读",
+   "卡片白底 + 居中柔和灰色外发光（无偏移阴影），标题栏是无边框浅色块，版面干净；正文统一 Times，公式粗斜体",
+   "同一套 Flaticon 风格图标（深描边 + 扁平填色）在各阶段反复出现，读者靠图标追踪数据流；右栏「Query / Images 标签 + 虚线分隔 + 安全/不安全照片对」可直接复用为数据集样例面板"
+  ],
+  "raster_embeds": "4 张示例照片（棒球、商场、两张微波炉场景）裁自原图；图标除 OpenAI / Bing（Simple Icons）外均为手写 SVG",
+  "known_diffs": "文档、图片、魔鬼角、人物、漏斗等图标为手绘近似；卡片上圆角统一为单一半径；外发光略淡；Bing 字标用 Lato Bold 代替 Segoe UI；弯曲灰箭头为等宽 flexArrow，原图是渐细的"
+ },
+ {
+  "id": "12-clip",
+  "name": "CLIP",
+  "paper": "Learning Transferable Visual Models From Natural Language Supervision",
+  "venue": "ICML 2021",
+  "arxiv": "2103.00020",
+  "fig": "Fig. 1",
+  "type": "architecture",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Helvetica",
+   "Times New Roman",
+   "Cutive Mono"
+  ],
+  "palette": [
+   "#E1D5E7",
+   "#D5E8D4",
+   "#DAE8FC",
+   "#9673A6",
+   "#82B366",
+   "#6C8EBF",
+   "#4D4D4D"
+  ],
+  "takeaways_zh": [
+   "原图本身就是 draw.io 默认色板（紫=文本、绿=图像、蓝=正样本对角线），按 2x 导出，40×40 网格单元严格对齐",
+   "梯形编码器（direction=south）+ 正交总线箭头扇出到 T/I 行列，对比矩阵用对角蓝色高亮表达「配对」语义",
+   "等宽字体+粉色占位词（{object}/dog）表示提示模板，层叠卡片/照片用 10px 偏移暗示 batch"
+  ],
+  "raster_embeds": "4 张层叠训练照片 + 零样本预测的狗照片（裁自原图，外框为原生描边）",
+  "known_diffs": "Cutive Mono 代替 Courier，略窄略细；省略号/竖省略号字形大小与基线略有差异；文字位置误差约 2px"
+ },
+ {
+  "id": "13-flamingo",
+  "name": "Flamingo",
+  "paper": "Flamingo: a Visual Language Model for Few-Shot Learning",
+  "venue": "NeurIPS 2022",
+  "arxiv": "2204.14198",
+  "fig": "Fig. 3",
+  "type": "architecture",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Roboto Mono"
+  ],
+  "palette": [
+   "#E0F0FF",
+   "#6D9EEB",
+   "#E6D6FF",
+   "#6FA8DC",
+   "#FFE2E2",
+   "#FF6E96",
+   "#D9D9D9"
+  ],
+  "takeaways_zh": [
+   "只用两种块色表达状态：蓝 + 雪花 = 冻结的预训练模块，淡紫 = 从零训练；左上角小图例一放，不看文字就知道哪些层在训练",
+   "全部文字用等宽字体，无圆角、无阴影，扁平块色像代码或幻灯片；「n-th / 1st」用小一号字，主名称大字，层级清楚",
+   "交错输入（灰底条：图 + 文）与处理后的 token 文本框上下对齐，正交折线把多路视觉特征分别接到各 GATED XATTN 层——「竖直主干 + 侧向注入」的走线可直接复用"
+  ],
+  "raster_embeds": "4 张照片（大狗、大猫、灰条内的小狗小猫）裁自原图，边框为原生矩形；雪花与火烈鸟 logo 为手写 SVG",
+  "known_diffs": "雪花略细；火烈鸟 logo 手绘，笔形略异；粗体等宽标签渲染宽约 2%；其余误差 1–2px"
+ },
+ {
+  "id": "14-blip2",
+  "name": "BLIP-2",
+  "paper": "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models",
+  "venue": "ICML 2023",
+  "arxiv": "2301.12597",
+  "fig": "Fig. 1 草稿版",
+  "type": "architecture",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Helvetica"
+  ],
+  "palette": [
+   "#FFFFFF",
+   "#147AC3",
+   "#FCF2CB",
+   "#E9E9E9",
+   "#7F7F7F",
+   "#FBB19B",
+   "#FAD865"
+  ],
+  "takeaways_zh": [
+   "配色极简：只有一种饱和蓝（冻结的大模型）+ 一块奶油黄（可训练模块），其余全是灰（箭头、描边、虚线框），焦点自然落在中间",
+   "梯形宽窄表达信息压缩：Image Encoder 左宽右窄、LLM 反过来，不看文字也能感到「压缩再展开」；两块虚线面板并列两阶段，上写目标、下写手段",
+   "灰底灰边胖箭头统一 2.5px 描边，彩色小方块 = query token，白色雪花贴在模块角上 = 冻结；这套组件可直接画任何「冻结编码器 + 适配器 + LLM」结构"
+  ],
+  "raster_embeds": "无；雪花和红宝石为手写 SVG",
+  "known_diffs": "注：此图取自 arXiv 源码包中被注释掉的早期 Figure 1（模块名 GemFormer），正式发表版为 Q-Former 示例图。原图字体为 Helvetica Neue，渲染用 Liberation Sans，Q / g 等字形略异；朝上的胖箭头略窄略长；文字位置误差 2px 以内"
+ },
+ {
+  "id": "15-dit",
+  "name": "DiT",
+  "paper": "Scalable Diffusion Models with Transformers",
+  "venue": "ICCV 2023",
+  "arxiv": "2212.09748",
+  "fig": "Fig. 3",
+  "type": "architecture",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Helvetica",
+   "Times New Roman"
+  ],
+  "palette": [
+   "#F3F3F6",
+   "#F9F9FB",
+   "#C6DAFD",
+   "#D4D7E3",
+   "#C3E3BD",
+   "#F9CC8B",
+   "#949494"
+  ],
+  "takeaways_zh": [
+   "同一套积木（LayerNorm / Scale / Attention / FFN 圆角块 + ⊕ 残差）用三次：主变体饱和色 + 黑线，两个对照变体整体褪色（浅填充 + 灰线灰字）——靠褪色表达次要，不需要图例",
+   "颜色按功能：蓝 = 归一化 / 调制，橙 = 注意力，绿 = 前馈 / 输出，灰 = 输入；左侧整体结构与右侧放大模块之间用虚线梯形（放大镜）连接",
+   "全图一种无衬线字体 + 斜体衬线数学符号；线条粗、箭头小、圆角统一；残差走左侧直角折线，α / β / γ 从右侧 MLP 竖线横向接入"
+  ],
+  "raster_embeds": "无（全部为原生图元与文字）",
+  "known_diffs": "Helvetica 在本机渲染为 Liberation Sans，标签字号缩小约 3.5% 以对齐宽度；α / β / γ 用 Times 斜体代替 Cambria Math，字形略异；几何误差约 1px"
+ },
+ {
+  "id": "16-mamba",
+  "name": "Mamba",
+  "paper": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+  "venue": "COLM 2024",
+  "arxiv": "2312.00752",
+  "fig": "Fig. 1",
+  "type": "architecture",
+  "source": "arXiv 经典",
+  "fonts": [
+   "Open Sans",
+   "Open Sans Condensed",
+   "Caladea",
+   "Times New Roman"
+  ],
+  "palette": [
+   "#FBE5D6",
+   "#E2F0D9",
+   "#DDEAF7",
+   "#C45A11",
+   "#ED7D31",
+   "#548234",
+   "#2E74B6"
+  ],
+  "takeaways_zh": [
+   "Office 主题色体系：每类元素一组「浅填充 + 深描边」——状态橙、参数绿、选择机制蓝；连线颜色与所属块一致，不用图例也能分组",
+   "4 条平行通道线 + 统一半径圆角折线，把「每个通道独立经过 A、由 B_t 注入、向 C_t 输出」画成层层错开的嵌套 L 形；h 用 4 层错位堆叠框表示状态扩展维度",
+   "右下角两段式金字塔（SRAM 橙 / HBM 绿）旁注硬件层级，直接复用主图色板；数学符号用 Cambria 斜体大字、说明用窄体粗体小字，层次分明"
+  ],
+  "raster_embeds": "无",
+  "known_diffs": "Cambria Math 用 Caladea 代替，h_{t−1} 的减号略窄；draw.io 空心箭头比 PowerPoint 略细；右侧出口箭头用折线绘制；文字位置误差约 3px"
+ },
+ {
+  "id": "17-llama-omni",
+  "name": "LLaMA-Omni",
+  "paper": "LLaMA-Omni: Seamless Speech Interaction with Large Language Models",
+  "venue": "arXiv 2024",
+  "arxiv": "2409.06666",
+  "fig": "Fig. 2",
+  "type": "architecture",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Cabin",
+   "Times New Roman",
+   "Courier New",
+   "Alegreya Sans"
+  ],
+  "palette": [
+   "#DDEBF8",
+   "#CBE1F8",
+   "#FCDDC8",
+   "#DEF3D2",
+   "#B6E1D0",
+   "#F38180",
+   "#8C1C13"
+  ],
+  "takeaways_zh": [
+   "模块画成横向通栏粉彩条（蓝 = 编 / 解码，桃 = 适配 / 上采样，绿 = LLM），左侧主图与右侧两个训练阶段共用一套颜色，靠颜色对上模块",
+   "token 行用红 / 黄 / 青三色分组，最后一组半透明淡出再接「…」表达流式生成；细灰半透明连线从色条下穿过，交代注意力关系却不抢视觉",
+   "注释层用暗红打字机字体（latency / simultaneous generation / Stage），与主体无衬线分开；🔥 / ❄️ 标可训练与冻结，点划竖线隔开推理图与训练阶段"
+  ],
+  "raster_embeds": "仅 llama 圆形 logo 为位图（紧裁、去背景）；麦克风为 vtracer 矢量化 SVG；火焰为 Fluent emoji，雪花为改色 Twemoji",
+  "known_diffs": "Gill Sans 用 Cabin 代替，标题用 Alegreya Sans Bold；ℒ 为通用花体字形；token 方块用圆角矩形代替原图略呈桶形的形状；注意力连线按因果规则生成而非逐条描摹"
+ },
+ {
+  "id": "18-mha2mla",
+  "name": "MHA2MLA",
+  "paper": "Towards Economical Inference: Enabling DeepSeek's Multi-Head Latent Attention in Any Transformer-based LLMs",
+  "venue": "arXiv 2025",
+  "arxiv": "2502.14837",
+  "fig": "Fig. 1",
+  "type": "architecture",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "MathJax TeX",
+   "Times New Roman"
+  ],
+  "palette": [
+   "#FEE0D6",
+   "#6A4E8C",
+   "#D9D9D9",
+   "#B393C5",
+   "#EAA0CF",
+   "#B0A6C2",
+   "#4B2F5A"
+  ],
+  "takeaways_zh": [
+   "用视觉编码代替文字：紫色梯形 = Linear（口宽向上降维、窄向上升维），淡紫边框 = 施加 RoPE，斜纹 = Cached，灰色横带 = Aligned——四种编码一个图例讲清",
+   "三栏 (a)(b)(c) 共用同一套行高网格（x、W、q/k、RoPE、输出），横向一眼看出差异；灰色对齐带跨栏贯穿，直接点出 MHA2MLA 与 MLA 输出对齐",
+   "立体感靠几层偏移的浅色副本而不是模糊投影；「拆分」用白色窄条 + 黑虚线 + 剪刀；配色克制：粉、紫、灰 + 一点黑"
+  ],
+  "raster_embeds": "无；梯形、多边形、hatch 斜纹填充、文字均为原生，剪刀为手写 SVG",
+  "known_diffs": "粉色框的模糊投影用 2 层偏移副本近似；原图横纵比例略失真，数学字形比例按标签单独调过；斜纹为干净直线（原图 JPEG 有锯齿）；数学字体从 jsdelivr 加载，断网时退化为普通衬线"
+ },
+ {
+  "id": "19-janusvln",
+  "name": "JanusVLN",
+  "paper": "JanusVLN: Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Language Navigation",
+  "venue": "arXiv 2025",
+  "arxiv": "2509.22548",
+  "fig": "Fig. 2",
+  "type": "architecture",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Times New Roman"
+  ],
+  "palette": [
+   "#FFF2CD",
+   "#FEE7F1",
+   "#FCCFE4",
+   "#E8FDFF",
+   "#CFFAFF",
+   "#EE7DB2",
+   "#7EEAF4"
+  ],
+  "takeaways_zh": [
+   "左右镜像对称：左粉 = 2D 语义支路，右青 = 3D 空间支路，在中轴 ⊕ 汇合后进 LLM；中间的大脑图标半粉半青，直接把「双记忆」画出来",
+   "同一支路内填充、描边、连线全用同一色相的深浅（Fusion 最浅、Encoder 更深、连线最饱和）；3D 支路的 token 用立方体、2D 用圆角方块，形状本身区分模态",
+   "记忆模块 = 深灰圆角大框 + 虚线小框标窗口 + 细虚线「放大线」连到大脑；底部视频帧按时间排开、当前帧双色描边，这个版式可直接套到任何双流记忆架构图"
+  ],
+  "raster_embeds": "LLM 框内的粉青狼头插画、2 张视频帧、当前帧、3D 房屋渲染（裁自原图）；对话气泡、机器狗、4 个动作标志、大脑、摄像机为手写 SVG，地球为改色 Fluent emoji",
+  "known_diffs": "draw.io 无渐变描边，⊕ 圆环、⊕→LLM 箭头、当前帧边框用 2–3 段纯色近似；机器狗与大脑图标为简化重绘；LLM 框的淡黄外发光偏弱"
+ },
+ {
+  "id": "20-motus",
+  "name": "Motus",
+  "paper": "Motus: A Unified Latent Action World Model",
+  "venue": "arXiv 2025",
+  "arxiv": "2512.13030",
+  "fig": "Fig. 1",
+  "type": "architecture",
+  "source": "PaperGallery 策展",
+  "fonts": [
+   "Times New Roman",
+   "Caladea"
+  ],
+  "palette": [
+   "#F8F6F9",
+   "#FFF1FF",
+   "#FFF3E5",
+   "#EFEAFF",
+   "#6B1A2E",
+   "#6E3A14",
+   "#5C337F"
+  ],
+  "takeaways_zh": [
+   "三个专家各一套「浅底+深描边+同色文字」三元配色（酒红/棕/紫），颜色直接标识模态",
+   "横贯三栏的渐变长条（粉→杏黄→淡紫）表示联合注意力，把三列在视觉上缝合在一起",
+   "双层错位圆角面板营造层叠深度；token 小方块和编码/解码器上下对称，τ 条件用侧边折线箭头注入 AdaLN"
+  ],
+  "raster_embeds": "顶部视频帧、左下加噪帧、右下机器人帧与 4 个噪声方块（裁自原图）；机械臂图标为手写 SVG，雪花为改色的 Fluent SVG",
+  "known_diffs": "三段渐变条由两段渐变拼接，中间有极淡接缝；机械臂图标为近似；τ 与公式用 Times/Caladea 代替 Cambria Math，字形略异"
+ }
+]
